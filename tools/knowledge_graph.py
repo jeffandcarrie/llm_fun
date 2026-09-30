@@ -7,10 +7,19 @@ from agent_framework.openai import OpenAIChatCompletionClient
 
 _triples: set[tuple[str, str, str]] = set()
 _model_client = OpenAIChatCompletionClient(
-    model="qwen",
+    model="openai-gpt-4o",
     base_url="http://localhost:4000/v1",
     api_key="placeholder",
 )
+
+
+def set_knowledge_graph_model(model: str) -> None:
+    global _model_client
+    _model_client = OpenAIChatCompletionClient(
+        model=model,
+        base_url="http://localhost:4000/v1",
+        api_key="placeholder",
+    )
 
 
 def _parse_triples(response_text: str) -> list[tuple[str, str, str]]:
