@@ -1,7 +1,7 @@
 from agent_framework import Agent
 from agent_framework.openai import OpenAIChatCompletionClient
 
-from tools import build_knowledge_graph, get_coordinates, get_knowledge_graph, get_weather, search_wikipedia
+from tools import anonymize_text, build_knowledge_graph, get_coordinates, get_knowledge_graph, get_weather, search_wikipedia
 from tools.knowledge_graph import set_knowledge_graph_model
 
 MODEL_ALIASES = ("openai-gpt-4o", "qwen")
@@ -15,8 +15,8 @@ def create_agent(model_name: str) -> Agent:
     return Agent(
         client=model_client,
         name=f"{model_name}-agent",
-        instructions="Use search_wikipedia for requests to find Wikipedia articles and return only the result titles and URLs; do not summarize results. Use get_weather for weather questions and get_coordinates for latitude or longitude questions. For knowledge graph requests, pass the source text to build_knowledge_graph, then use get_knowledge_graph to show the stored graph when asked. Do not infer unstated facts. After a tool returns, answer using its result. Do not invent values or mention external weather services.",
-        tools=[get_weather, get_coordinates, build_knowledge_graph, get_knowledge_graph, search_wikipedia],
+        instructions="Use search_wikipedia for requests to find Wikipedia articles and return only the result titles and URLs; do not summarize results. Use get_weather for weather questions and get_coordinates for latitude or longitude questions. Use anonymize_text for requests to anonymize personally identifiable information; do not claim the result is fully de-identified. For knowledge graph requests, pass the source text to build_knowledge_graph, then use get_knowledge_graph to show the stored graph when asked. Do not infer unstated facts. After a tool returns, answer using its result. Do not invent values or mention external weather services.",
+        tools=[get_weather, get_coordinates, build_knowledge_graph, get_knowledge_graph, search_wikipedia, anonymize_text],
         default_options={"tool_choice": "auto"},
     )
 
