@@ -1,0 +1,10 @@
+[project]
+name = "llm-fun"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "agent-framework>=1.19.0",
+    "vllm-metal>=0.1.0",
+]

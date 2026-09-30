@@ -1,0 +1,6 @@
+model_list:
+  - model_name: qwen
+    litellm_params:
+      model: openai/mlx-community/Qwen2.5-7B-Instruct-4bit
+      api_base: http://localhost:8001/v1
+      api_key: placeholder
