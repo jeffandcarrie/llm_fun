@@ -4,3 +4,7 @@ model_list:
       model: openai/mlx-community/Qwen2.5-7B-Instruct-4bit
       api_base: http://localhost:8001/v1
       api_key: placeholder
+  - model_name: openai-gpt-4o
+    litellm_params:
+      model: openai/gpt-4o
+      api_key: os.environ/OPENAI_API_KEY

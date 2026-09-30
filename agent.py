@@ -5,7 +5,7 @@ from tools import build_knowledge_graph, get_coordinates, get_knowledge_graph, g
 
 # 2. Configure the client to talk to the LiteLLM proxy
 model_client = OpenAIChatCompletionClient(
-    model="qwen",
+    model="openai-gpt-4o",
     base_url="http://localhost:4000/v1",
     api_key="placeholder",
 )

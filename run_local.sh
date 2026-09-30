@@ -6,6 +6,12 @@ LOG_DIR="${TMPDIR:-/tmp}/llm-fun"
 mkdir -p "$LOG_DIR"
 cd "$ROOT_DIR"
 
+if [[ -f "$ROOT_DIR/.env" ]]; then
+  set -a
+  source "$ROOT_DIR/.env"
+  set +a
+fi
+
 for command in uv uvx curl; do
   if ! command -v "$command" >/dev/null 2>&1; then
     printf 'Required command not found: %s\n' "$command" >&2
